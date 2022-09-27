@@ -24,13 +24,21 @@
     /// <returns>A list of 9 strings representing each square.</returns>
     static List<string> GetNewBoard()
     {
-        
+        string[] numbers ={"1","2","3","4","5","6","7","8","9"}
+        List<string> board = new List<string>(numbers);
+        return board;
     }
 
     /// <summary>Displays the board in a 3x3 grid.</summary>
     /// <param name="board">The board</param>
     static void DisplayBoard(List<string> board)
     {
+        Console.WriteLine($"{board[0]}|{board[1]}|{board[2]}");
+        Console.WriteLine("-+-+-");
+        Console.WriteLine($"{board[3]}|{board[4]}|{board[5]}");
+        Console.WriteLine("-+-+-");
+        Console.WriteLine($"{board[6]}|{board[7]}|{board[8]}");
+
 
     }
 
@@ -41,7 +49,13 @@
     /// <returns>True if the game is over</returns>
     static bool IsGameOver(List<string> board)
     {
+        
+        if(IsWinner(board,"x")||IsWinner(board,"o") || IsTie(board))
+            {
+                return true;
+            }
         return false;
+                
     }
 
     /// <summary>Determines if the provided player has a tic tac toe.</summary>
@@ -50,6 +64,37 @@
     /// <returns></returns>
     static bool IsWinner(List<string> board, string player)
     {
+        int h = 0;
+        int x = 0;
+        int y = 1;
+        int z = 2;
+        while (h <3){
+            if(player == board[x] && player == board[y] && player == board[z])
+        {
+                return true;
+        }
+        x += 3; y += 3; z += 3; h ++;
+        }
+
+        int v = 0;
+        x = 0; y = 1; z = 2;
+        while (v <3){
+            if(player == board[x] && player == board[y] && player == board[z])
+        {
+                return true;
+        }
+        x ++; y ++; z ++; v ++;
+        }
+
+        if(player == board[2] && player == board[4] && player == board[6])
+        {
+            return true;
+        }
+        if(player == board[0] && player == board[4] && player == board[8])
+        {
+            return true;
+        }
+        
         return false;
     }
 
@@ -66,7 +111,10 @@
     /// <returns>The next players sign (x or o)</returns>
     static string GetNextPlayer(string currentPlayer)
     {
-        return "x";
+        if( currentPlayer == "o"){
+            return "x";
+        }
+        return "o";
     }
 
     /// <summary>Gets the 1-based spot number associated with the user's choice.</summary>
@@ -89,3 +137,4 @@
 
     }
 }
+
