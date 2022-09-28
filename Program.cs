@@ -24,7 +24,7 @@
     /// <returns>A list of 9 strings representing each square.</returns>
     static List<string> GetNewBoard()
     {
-        string[] numbers ={"1","2","3","4","5","6","7","8","9"}
+        string[] numbers ={"1","2","3","4","5","6","7","8","9"};
         List<string> board = new List<string>(numbers);
         return board;
     }
