@@ -69,7 +69,7 @@
         int y = 1;
         int z = 2;
         while (h <3){
-            if(player == board[x] && player == board[y] && player == board[z])
+            if(player == board[x] & player == board[y] && player == board[z])
         {
                 return true;
         }
@@ -77,20 +77,20 @@
         }
 
         int v = 0;
-        x = 0; y = 1; z = 2;
+        x = 0; y = 3; z = 6;
         while (v <3){
-            if(player == board[x] && player == board[y] && player == board[z])
+            if(player == board[x] & player == board[y] & player == board[z])
         {
                 return true;
         }
         x ++; y ++; z ++; v ++;
         }
 
-        if(player == board[2] && player == board[4] && player == board[6])
+        if(player == board[2] & player == board[4] & player == board[6])
         {
             return true;
         }
-        if(player == board[0] && player == board[4] && player == board[8])
+        if(player == board[0] & player == board[4] & player == board[8])
         {
             return true;
         }
@@ -103,7 +103,10 @@
     /// <returns>True if the board is full.</returns>
     static bool IsTie(List<string> board)
     {
-        return false;
+        if(board[0] == "1" || board[1] == "2" || board[2] == "3" || board[3] == "4" || board[4] == "5" || board[5] == "6" || board[6] == "7" ||board[7] == "8" ||board[8] == "9"){
+            return false;
+        }
+        return true;
     }
 
     /// <summary>Cycles through the players (from x to o and o to x)</summary>
@@ -122,7 +125,49 @@
     /// <returns>A 1-based spot number (not a 0-based index)</returns>
     static int GetMoveChoice(string currentPlayer)
     {
-        return 1;
+        Console.WriteLine($"{currentPlayer}'s turn: ");
+        while (true)
+        {
+            string choice ="";
+        choice = Console.ReadLine();
+        if (choice == "1")
+        {
+            return 1;
+        }
+        if (choice == "2")
+        {
+            return 2;
+        }
+        if (choice == "3")
+        {
+            return 3;
+        }
+        if (choice == "4")
+        {
+            return 4;
+        }
+        if (choice == "5")
+        {
+            return 5;
+        }
+        if (choice == "6")
+        {
+            return 6;
+        }
+        if (choice == "7")
+        {
+            return 7;
+        }
+        if (choice == "8")
+        {
+            return 8;
+        }
+        if (choice == "9")
+        {
+            return 9;
+        }
+        }
+        
     }
 
     /// <summary>
@@ -134,7 +179,8 @@
     /// <param name="currentPlayer">The current player's sign (x or o)</param>
     static void MakeMove(List<string> board, int choice, string currentPlayer)
     {
-
+        choice= choice-1;
+        board[choice] = currentPlayer;
     }
 }
 
