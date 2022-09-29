@@ -125,11 +125,12 @@
     /// <returns>A 1-based spot number (not a 0-based index)</returns>
     static int GetMoveChoice(string currentPlayer)
     {
-        Console.WriteLine($"{currentPlayer}'s turn: ");
+       Console.Write($"{currentPlayer}'s turn: ");
         while (true)
         {
-            string choice ="";
-        choice = Console.ReadLine();
+        
+        string choice ="";
+        choice = Console.ReadLine() ?? "";
         if (choice == "1")
         {
             return 1;
@@ -166,9 +167,10 @@
         {
             return 9;
         }
+        Console.Write("Invalid Choice try again: ");
+        }
         }
         
-    }
 
     /// <summary>
     /// Places the current players mark on the board at the desired spot.
